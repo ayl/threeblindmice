@@ -1,0 +1,88 @@
+%h2 MicroRNA breakdown
+#breakdown_chart
+
+#percentage_graph
+
+#expression_graph	
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'percentage_graph' },  
+      title: { text: 'Percent expression levels' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.x +' months</b>: '+ this.y ;
+         }
+      },
+      series: [{
+        name: 'Intergenic',
+        data: #{@meta.intergenic_per_expression.to_json}  
+      }, {
+        name: 'Exon',
+        data: #{@meta.exon_per_expression.to_json}
+      }, {
+        name: 'Intron',
+        data: #{@meta.intron_per_expression.to_json}
+      }]
+    });  
+  });  
+
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'breakdown_chart' },  
+      title: { text: 'Distribution of read counts' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+         }
+      },
+      plotOptions: {
+         pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+               enabled: true,
+               //color: Highcharts.theme.textColor || '#000000',
+               //connectorColor: Highcharts.theme.textColor || '#000000',
+               formatter: function() {
+                  return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+               }
+            }
+         }
+      },
+      series: [{
+        type: 'pie',
+        name: 'Distribution of expression levels',
+        data: #{@meta.percentages_count.to_json}
+      }]
+    });  
+  });  
+
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'expression_graph' },  
+      title: { text: 'Average expression levels' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.x +' months</b>: '+ this.y ;
+         }
+      },
+      series: [{
+        name: 'Intergenic',
+        data: #{@meta.intergenic_avg_expression.to_json}
+      }, {
+        name: 'Exon',
+        data: #{@meta.exon_avg_expression.to_json}
+      }, {   
+        name: 'Intron',
+        data: #{@meta.intron_avg_expression.to_json}
+      }]
+    });  
+  });  
+
+  
