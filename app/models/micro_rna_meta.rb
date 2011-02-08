@@ -95,7 +95,7 @@ class MicroRnaMeta
   
   def self.loadFile
     meta = MicroRnaMeta.new
-    f = File.open("/Users/ayl/Research/apte/microrna/Final.F2cov.patches.normalized.6cutoff", "r")
+    f = File.open("/home/ayl/DATA/microRNA/Analysis/Expression/Final.F2cov.patches.normalized", "r")
     f.each_line do |line|
       a = line.split("\t")
       type = "intergenic"
