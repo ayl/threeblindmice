@@ -95,6 +95,7 @@ class MicroRnaMeta
   
   def self.loadFile
     meta = MicroRnaMeta.new
+    count = 0
     f = File.open("/home/ayl/DATA/microRNA/Analysis/Expression/Final.F2cov.patches.normalized", "r")
     f.each_line do |line|
       a = line.split("\t")
@@ -164,6 +165,8 @@ class MicroRnaMeta
         meta.intergenic_express5 += Float a[6]
         meta.intergenic_express6 += Float a[7]
       end
+      count += 1
+      print "count is " + count.to_s + "\n" if count % 1000 == 0
     end
     meta.save
   end

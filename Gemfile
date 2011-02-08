@@ -9,6 +9,7 @@ gem "haml-rails"
 gem "jquery-rails"
 gem "compass"
 gem "json"
+gem "ruby-prof"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
