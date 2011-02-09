@@ -16,7 +16,11 @@
       #sidebar
         %ul
           %li
-            = link_to "MicroRNA", micro_rna_metas_path
+            = link_to "MicroRNA Meta Statistics", micro_rna_metas_path
+          %li
+            = link_to "Whole Transcriptome Meta Statistics", wt_metas_path
+          %li Search in microRNA
+          %li Search in whole transcriptome
       #content
         - if flash[:notice]
           #notice

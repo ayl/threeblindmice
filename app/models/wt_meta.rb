@@ -139,7 +139,7 @@ class WtMeta
     count = 0
     f = File.open("/home/ayl/DATA/wt/Analysis/Expression/Final.F2cov.patches.normalized", "r")
     f.each_line do |line|
-      a = line.split("\t")
+      a = line.chomp.split("\t")
       type = "intergenic"
       
       #parsing of gene alignment
