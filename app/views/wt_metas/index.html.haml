@@ -1,0 +1,79 @@
+%h2 Whole Transcriptome breakdown
+#count_graph
+
+#percentage_graph
+
+#expression_graph	
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'percentage_graph' },  
+      title: { text: 'Percent expression levels' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.x +' months</b>: '+ this.y ;
+         }
+      },
+      series: [{
+        name: 'Intergenic',
+        data: #{@meta.intergenic_per_expression.to_json}  
+      }, {
+        name: 'Exon',
+        data: #{@meta.exon_per_expression.to_json}
+      }, {
+        name: 'Intron',
+        data: #{@meta.intron_per_expression.to_json}
+      }]
+    });  
+  });  
+
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'count_graph' },  
+      title: { text: 'Count of reads' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.x +' months</b>: '+ this.y ;
+         }
+      },
+      series: [{
+        name: 'Intergenic',
+        data: #{@meta.intergenic_count_expression.to_json}  
+      }, {
+        name: 'Exon',
+        data: #{@meta.exon_count_expression.to_json}
+      }, {
+        name: 'Intron',
+        data: #{@meta.intron_count_expression.to_json}
+      }]
+    });  
+  });  
+
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'expression_graph' },  
+      title: { text: 'Average expression levels' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.x +' months</b>: '+ this.y ;
+         }
+      },
+      series: [{
+        name: 'Intergenic',
+        data: #{@meta.intergenic_avg_expression.to_json}
+      }, {
+        name: 'Exon',
+        data: #{@meta.exon_avg_expression.to_json}
+      }, {   
+        name: 'Intron',
+        data: #{@meta.intron_avg_expression.to_json}
+      }]
+    });  
+  });  
+
+  

@@ -53,7 +53,31 @@ class WtMeta
   key :exon_express5,    Float, :default => 0
   key :exon_express6,    Float, :default => 0
   
-  def percentages_count
+  def exon_count_expression
+    return Array[Hash["x" => 3, "y" => self.exon_count1],
+                Hash["x" => 6, "y" => self.exon_count2],
+                Hash["x" => 12, "y" => self.exon_count3],
+                Hash["x" => 18, "y" => self.exon_count4],
+                Hash["x" => 24, "y" => self.exon_count5],
+                Hash["x" => 30, "y" => self.exon_count6]]
+  end
+  
+  def intron_count_expression
+    return Array[Hash["x" => 3, "y" => self.intron_count1],
+                Hash["x" => 6, "y" => self.intron_count2],
+                Hash["x" => 12, "y" => self.intron_count3],
+                Hash["x" => 18, "y" => self.intron_count4],
+                Hash["x" => 24, "y" => self.intron_count5],
+                Hash["x" => 30, "y" => self.intron_count6]]
+  end
+  
+  def intergenic_count_expression
+    return Array[Hash["x" => 3, "y" => self.intergenic_count1],
+                Hash["x" => 6, "y" => self.intergenic_count2],
+                Hash["x" => 12, "y" => self.intergenic_count3],
+                Hash["x" => 18, "y" => self.intergenic_count4],
+                Hash["x" => 24, "y" => self.intergenic_count5],
+                Hash["x" => 30, "y" => self.intergenic_count6]]
   end
   
   def exon_avg_expression

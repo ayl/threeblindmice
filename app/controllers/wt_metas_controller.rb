@@ -1,6 +1,6 @@
-class MicroRnaMetasController < ApplicationController
+class WtMetasController < ApplicationController
   def index
-    @meta = MicroRnaMeta.all.first
+    @meta = WtMeta.all.first
 
     respond_to do |format|
       format.html # index.html.erb
