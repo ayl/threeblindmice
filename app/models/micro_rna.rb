@@ -44,7 +44,7 @@ class MicroRna
   key :maxexpress,  Float
   key :minlogdiff,  Float
   key :maxlogdiff,  Float
-  key :conisistent, Integer  # -1 means consistently negative, +1 means consistently positive, 0 means not consistent
+  key :consistent, Integer  # -1 means consistently negative, +1 means consistently positive, 0 means not consistent
   key :numofexpress, Integer
   key :logdiff6to3,    Float    
   key :logdiff9to3,    Float    
