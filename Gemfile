@@ -1,6 +1,5 @@
 require 'rubygems'
-require 'mongo'
-source 'http://gemcutter.org'
+#require 'mongo'
 
 gem 'rails', '3.0.3'
 gem "mongo_mapper"
@@ -10,6 +9,7 @@ gem "jquery-rails"
 gem "compass"
 gem "json"
 gem "ruby-prof"
+gem 'bson_ext'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

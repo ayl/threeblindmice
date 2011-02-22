@@ -137,7 +137,7 @@ class WtMeta
   def self.loadFile
     meta = WtMeta.new
     count = 0
-    f = File.open("/home/ayl/DATA/wt/Analysis/Expression/Final.F2cov.patches.normalized", "r")
+    f = File.open("/home/ayl/DATA/WT/Analysis/Expression/Final.F2cov.patches.normalized", "r")
     f.each_line do |line|
       a = line.chomp.split("\t")
       type = "intergenic"

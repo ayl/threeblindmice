@@ -9,7 +9,7 @@ connection = Connection()
 db = connection['#myapp-production']
 epochnames = ["express3", "express6", "express9", "express12", "express18", "express24"]
 total = 0
-for wt in db.micro_rnas.find():
+for wt in db.wts.find():
   total += 1
   if (total % 1000 == 0):
     print "total at: " + str(total)
@@ -62,5 +62,5 @@ for wt in db.micro_rnas.find():
   wt["minexpress"] = minexpress
   wt["maxexpress"] = maxexpress
   wt["numofexpress"] = count
-  db.micro_rnas.save(wt)
+  db.wts.save(wt)
 
