@@ -1,0 +1,40 @@
+%h2 Results
+
+%table
+  %tr
+    %th Gene
+    %th Location
+    %th Locus type
+    %th Min Diff
+    %th Consistent
+    %th 3 mon
+    %th 6 mon
+    %th 9 mon
+    %th 12 mon
+    %th 18 mon
+    %th 24 mon
+  - for wt in @all
+    %tr
+      %td 
+        =wt.gene
+      %td 
+        =wt.locus
+      %td 
+        =wt.genetype
+      %td 
+        = "%.2f" % wt.absmindiff
+      %td 
+        =wt.consistent
+      %td 
+        =wt.express3
+      %td 
+        =wt.express6
+      %td 
+        =wt.express9
+      %td 
+        =wt.express12
+      %td 
+        =wt.express18
+      %td 
+        =wt.express24
+  

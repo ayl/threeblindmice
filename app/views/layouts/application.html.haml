@@ -17,10 +17,12 @@
         %ul
           %li
             = link_to "MicroRNA Meta Statistics", micro_rna_metas_path
+          %li 
+            = link_to "Browse in micro RNA", micro_rnas_path
           %li
             = link_to "Whole Transcriptome Meta Statistics", wt_metas_path
-          %li Search in microRNA
-          %li Search in whole transcriptome
+          %li 
+            = link_to "Browse in whole transcriptome", wts_path
       #content
         - if flash[:notice]
           #notice

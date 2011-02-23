@@ -51,5 +51,12 @@ class MicroRna
   key :logdiff18to12,    Float  
   key :logdiff24to12,    Float  
 
+  def self.browse(browse)
+    browse = browse.to_f
+    @a = all(:conditions => {:consistent => -1, :absmindiff.gte => browse, :numofexpress => 6})
+    @b = all(:conditions => {:consistent => 1, :absmindiff.gte => browse, :numofexpress => 6})
+    @a = @a + @b
+    return @a.sort!{|a, b| b.absmindiff <=> a.absmindiff}
+  end
   
 end

@@ -50,4 +50,11 @@ class Wt
   key :logdiff9to3,    Float    
   key :logdiff18to12,    Float  
   key :logdiff24to12,    Float  
+
+  def self.browse(browse)
+    browse = browse.to_f
+    @a = all(:conditions => {:consistent => -1, :absmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6})
+    @b = all(:conditions => {:consistent => 1, :absmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6})
+    return @a + @b
+  end
 end

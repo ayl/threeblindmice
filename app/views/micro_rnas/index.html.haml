@@ -1,0 +1,8 @@
+%h2 Browse Micro RNA Data
+
+= form_tag micro_rnas_browse_path, :method => 'get' do
+  = text_field_tag :browse, params[:browse] 
+  = submit_tag "Browse", :name => nil
+
+
+  

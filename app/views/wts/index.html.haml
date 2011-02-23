@@ -1,0 +1,8 @@
+%h2 Browse Whole Transcriptome Data
+
+= form_tag wts_browse_path, :method => 'get' do
+  = text_field_tag :browse, params[:browse] 
+  = submit_tag "Browse", :name => nil
+
+
+  
