@@ -1,0 +1,70 @@
+%h2 Search Results 
+%h3
+  = @genename
+
+#expression_graph	
+  
+%table#results
+  %thead
+    %tr
+      %th Location
+      %th Locus type
+      %th Min Diff
+      %th Direction
+      %th 3 mon
+      %th 6 mon
+      %th 9 mon
+      %th 12 mon
+      %th 18 mon
+      %th 24 mon
+  %tbody
+    - for wt in @all
+      %tr
+        %td.small
+          =wt.locus
+        %td.small
+          =wt.genetype
+        %td.small
+          ="%.2f" % wt.absmindiff
+        %td.small
+          =wt.consistent
+        %td.small
+          =wt.express3
+        %td.small
+          =wt.express6
+        %td.small
+          =wt.express9
+        %td.small
+          =wt.express12
+        %td.small
+          =wt.express18
+        %td.small
+          =wt.express24
+
+:javascript
+  $(document).ready(function() { 
+          $("#results").tablesorter(); 
+      } 
+  ); 
+
+:javascript 
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'expression_graph' },  
+      title: { text: 'Average expression levels' },  
+      tooltip: {
+         formatter: function() {
+            return '<b>'+ this.x +' months</b>: '+ this.y ;
+         }
+      },
+      series: [ {
+        name: 'Exon',
+        data: #{@exon.to_json}
+      }, {   
+        name: 'Intron',
+        data: #{@intron.to_json}
+      }]
+    });  
+  });  
+
+  

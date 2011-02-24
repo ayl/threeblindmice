@@ -4,40 +4,40 @@
   %thead
     %tr
       %th Gene
-      %th Location
-      %th Locus type
-      %th Min Diff
-      %th Direction
-      %th 3 mon
-      %th 6 mon
-      %th 9 mon
-      %th 12 mon
-      %th 18 mon
-      %th 24 mon
+      %th Locus
+      %th Type
+      %th Min
+      %th Dir
+      %th 3
+      %th 6
+      %th 9
+      %th 12
+      %th 18
+      %th 24
   %tbody
     - for wt in @all
       %tr
-        %td 
+        %td.small
           =wt.gene
-        %td 
+        %td.small
           =wt.locus
-        %td 
+        %td.small
           =wt.genetype
-        %td 
+        %td.small
           ="%.2f" % wt.absmindiff
-        %td 
+        %td.small
           =wt.consistent
-        %td 
+        %td.small
           =wt.express3
-        %td 
+        %td.small
           =wt.express6
-        %td 
+        %td.small
           =wt.express9
-        %td 
+        %td.small
           =wt.express12
-        %td 
+        %td.small
           =wt.express18
-        %td 
+        %td.small
           =wt.express24
 
 :javascript
