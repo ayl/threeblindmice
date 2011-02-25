@@ -50,6 +50,9 @@ class MicroRna
   key :logdiff9to3,    Float    
   key :logdiff18to12,    Float  
   key :logdiff24to12,    Float  
+  key :logconsistent, Integer
+  key :abslogmaxdiff, Float
+  key :abslogmindiff, Float
 
   def self.search(name)
     @a = all(:conditions => {:gene => name}, :limit => 500)
