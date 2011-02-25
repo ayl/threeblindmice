@@ -18,7 +18,7 @@
     - for wt in @all
       %tr
         %td.small
-          =wt.gene
+          =link_to wt.gene, "search?search="+wt.gene
         %td.small
           =wt.locus
         %td.small
