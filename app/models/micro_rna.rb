@@ -60,6 +60,15 @@ class MicroRna
   end
   
 
+  def self.logbrowse(browse)
+    browse = browse.to_f
+    @a = all(:conditions => {:logconsistent => -1, :abslogmindiff.gte => browse, :numofexpress => 6}, :limit => 500)
+    @b = all(:conditions => {:logconsistent => 1, :abslogmindiff.gte => browse, :numofexpress => 6}, :limit => 500)
+    @a = @a + @b
+    return @a.sort!{|a, b| b.absmindiff <=> a.absmindiff}
+  end
+  
+
   def self.browse(browse)
     browse = browse.to_f
     @a = all(:conditions => {:consistent => -1, :absmindiff.gte => browse, :numofexpress => 6}, :limit => 500)

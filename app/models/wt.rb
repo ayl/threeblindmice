@@ -59,6 +59,14 @@ class Wt
     return @a.sort!{|a, b| a.locus <=> b.locus}
   end
   
+  def self.logbrowse(browse)
+    browse = browse.to_f
+    @a = all(:conditions => {:logconsistent => -1, :abslogmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
+    @b = all(:conditions => {:logconsistent => 1, :abslogmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
+    return @a + @b
+  end
+
+  
   def self.browse(browse)
     browse = browse.to_f
     @a = all(:conditions => {:consistent => -1, :absmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
