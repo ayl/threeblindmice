@@ -4,10 +4,10 @@
   %thead
     %tr
       %th Gene
-      %th Locus
+      //%th Locus
       %th Type
       %th Min
-      %th Dir
+      %th Log
       %th 3
       %th 6
       %th 9
@@ -19,14 +19,14 @@
       %tr
         %td.small
           =link_to wt.gene, "search?search="+wt.gene
-        %td.small
-          =wt.locus
+        //%td.small
+        //  =wt.locus
         %td.small
           =wt.genetype
         %td.small
           ="%.2f" % wt.absmindiff
         %td.small
-          =wt.consistent
+          ="%.2f" % wt.abslogmindiff unless wt.abslogmindiff == nil
         %td.small
           =wt.express3
         %td.small

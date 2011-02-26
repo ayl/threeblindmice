@@ -1,7 +1,15 @@
 %h2 Browse Micro RNA Data
 
 = form_tag micro_rnas_browse_path, :method => 'get' do
+  Criteria: 
   = text_field_tag :browse, params[:browse] 
+  %br
+  = radio_button "method", "algor", "absmindiff", :checked=>true
+  Difference based search
+  %br
+  = radio_button "method", "algor", "abslogmindiff"
+  Log based search
+  %br
   = submit_tag "Browse", :name => nil
 
 

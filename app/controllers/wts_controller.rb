@@ -6,7 +6,12 @@ class WtsController < ApplicationController
   end
 
   def browse
-    @all = Wt.browse(params[:browse])
+    @method = params[:method]
+    if (@method["algor"] == "absmindiff") 
+      @all = Wt.browse(params[:browse])
+    elsif (@method["algor"] == "abslogmindiff") 
+      @all = Wt.logbrowse(params[:browse])
+    end
     respond_to do |format|
       format.html 
     end

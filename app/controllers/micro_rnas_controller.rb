@@ -6,7 +6,13 @@ class MicroRnasController < ApplicationController
   end
 
   def browse
-    @all = MicroRna.browse(params[:browse])
+    @method = params[:method]
+    if (@method["algor"] == "absmindiff") 
+      @all = MicroRna.browse(params[:browse])
+    elsif (@method["algor"] == "abslogmindiff") 
+      @all = MicroRna.logbrowse(params[:browse])
+    end
+
     respond_to do |format|
       format.html 
     end
