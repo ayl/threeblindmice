@@ -9,25 +9,28 @@
 %table#results
   %thead
     %tr
-      %th Location
-      %th Locus type
+      %th Locus
+      %th Type
       %th Min Diff
-      %th Direction
-      %th 3 mon
-      %th 6 mon
-      %th 9 mon
-      %th 12 mon
-      %th 18 mon
-      %th 24 mon
+      %th Min Ratio
+      %th Dir
+      %th 3 
+      %th 6 
+      %th 9 
+      %th 12 
+      %th 18 
+      %th 24 
   %tbody
     - for wt in @all
       %tr
         %td.small
-          =wt.locus
+          =link_to wt.locus, "search?one=yes&id="+wt.id.to_s
         %td.small
           =wt.genetype
         %td.small
           ="%.2f" % wt.absmindiff
+        %td.small
+          ="%.2f" % wt.abslogmindiff unless wt.abslogmindiff == nil
         %td.small
           =wt.consistent
         %td.small
