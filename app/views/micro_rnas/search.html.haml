@@ -1,7 +1,8 @@
 %h2
   = @genename
 
-=link_to "NCBI gene link", "http://www.ncbi.nlm.nih.gov/gene?term="+@genename+"[ti]%20AND%20%22mus%20musculus%22[organism]&cmd=DetailsSearch"
+- if @genename != "intergenic"
+  =link_to "NCBI gene link", "http://www.ncbi.nlm.nih.gov/gene?term="+@genename+"[ti]%20AND%20%22mus%20musculus%22[organism]&cmd=DetailsSearch"
 
 #expression_graph	
   
@@ -58,13 +59,20 @@
             return '<b>'+ this.x +' months</b>: '+ this.y ;
          }
       },
-      series: [ {
+      series: [ 
+      {
+        name: 'Intergenic',
+        data: #{@intergen.to_json}
+      }, 
+      {
         name: 'Exon',
         data: #{@exon.to_json}
-      }, {   
+      }, 
+      {   
         name: 'Intron',
         data: #{@intron.to_json}
-      }]
+      }
+        ]
     });  
   });  
 

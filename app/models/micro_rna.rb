@@ -78,6 +78,34 @@ class MicroRna
   end
   
 
+  def self.calculateIntergenicAvg(array)
+    @a = Array[0, 0, 0, 0, 0, 0]
+    @b = Array[0, 0, 0, 0, 0, 0]
+    for wt in array
+      if wt.genetype == "intergenic"
+        @a[0] += wt.express3 unless wt.express3 == nil
+        @b[0] += 1 unless wt.express3 == nil
+        @a[1] += wt.express6 unless wt.express6 == nil
+        @b[1] += 1 unless wt.express6 == nil
+        @a[2] += wt.express9 unless wt.express9 == nil
+        @b[2] += 1 unless wt.express9 == nil
+        @a[3] += wt.express12 unless wt.express12 == nil
+        @b[3] += 1 unless wt.express12 == nil
+        @a[4] += wt.express18 unless wt.express18 == nil
+        @b[4] += 1 unless wt.express18 == nil
+        @a[5] += wt.express24 unless wt.express24 == nil
+        @b[5] += 1 unless wt.express24 == nil
+      end
+    end
+    return Array[Hash["x" => 3, "y" => Float(@a[0]) / @b[0]], 
+	    Hash["x" => 6, "y" => Float(@a[1]) / @b[1]],
+	    Hash["x" => 9, "y" => Float(@a[2]) / @b[2]],
+	    Hash["x" => 12, "y" => Float(@a[3]) / @b[3]],
+	    Hash["x" => 18, "y" => Float(@a[4]) / @b[4]],
+	    Hash["x" => 24, "y" => Float(@a[5]) / @b[5]]]
+  end
+
+
   def self.calculateIntronAvg(array)
     @a = Array[0, 0, 0, 0, 0, 0]
     @b = Array[0, 0, 0, 0, 0, 0]
@@ -109,7 +137,7 @@ class MicroRna
     @a = Array[0, 0, 0, 0, 0, 0]
     @b = Array[0, 0, 0, 0, 0, 0]
     for wt in array
-      if wt.genetype != "intron"
+      if wt.genetype != "intron" and wt.genetype != "intergenic"
         @a[0] += wt.express3 unless wt.express3 == nil
         @b[0] += 1 unless wt.express3 == nil
         @a[1] += wt.express6 unless wt.express6 == nil
