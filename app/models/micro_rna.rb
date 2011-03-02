@@ -99,10 +99,10 @@ class MicroRna
     end
     return Array[Hash["x" => 3, "y" => Float(@a[0]) / @b[0]], 
 	    Hash["x" => 6, "y" => Float(@a[1]) / @b[1]],
-	    Hash["x" => 9, "y" => Float(@a[2]) / @b[2]],
-	    Hash["x" => 12, "y" => Float(@a[3]) / @b[3]],
-	    Hash["x" => 18, "y" => Float(@a[4]) / @b[4]],
-	    Hash["x" => 24, "y" => Float(@a[5]) / @b[5]]]
+	    Hash["x" => 12, "y" => Float(@a[2]) / @b[2]],
+	    Hash["x" => 18, "y" => Float(@a[3]) / @b[3]],
+	    Hash["x" => 24, "y" => Float(@a[4]) / @b[4]],
+	    Hash["x" => 30, "y" => Float(@a[5]) / @b[5]]]
   end
 
 
@@ -127,10 +127,10 @@ class MicroRna
     end
     return Array[Hash["x" => 3, "y" => Float(@a[0]) / @b[0]], 
 	    Hash["x" => 6, "y" => Float(@a[1]) / @b[1]],
-	    Hash["x" => 9, "y" => Float(@a[2]) / @b[2]],
-	    Hash["x" => 12, "y" => Float(@a[3]) / @b[3]],
-	    Hash["x" => 18, "y" => Float(@a[4]) / @b[4]],
-	    Hash["x" => 24, "y" => Float(@a[5]) / @b[5]]]
+	    Hash["x" => 12, "y" => Float(@a[2]) / @b[2]],
+	    Hash["x" => 18, "y" => Float(@a[3]) / @b[3]],
+	    Hash["x" => 24, "y" => Float(@a[4]) / @b[4]],
+	    Hash["x" => 30, "y" => Float(@a[5]) / @b[5]]]
   end
 
   def self.calculateExonAvg(array)
@@ -154,9 +154,9 @@ class MicroRna
     end
     return Array[Hash["x" => 3, "y" => Float(@a[0]) / @b[0]], 
 	    Hash["x" => 6, "y" => Float(@a[1]) / @b[1]],
-	    Hash["x" => 9, "y" => Float(@a[2]) / @b[2]],
-	    Hash["x" => 12, "y" => Float(@a[3]) / @b[3]],
-	    Hash["x" => 18, "y" => Float(@a[4]) / @b[4]],
-	    Hash["x" => 24, "y" => Float(@a[5]) / @b[5]]]
+	    Hash["x" => 12, "y" => Float(@a[2]) / @b[2]],
+	    Hash["x" => 18, "y" => Float(@a[3]) / @b[3]],
+	    Hash["x" => 24, "y" => Float(@a[4]) / @b[4]],
+	    Hash["x" => 30, "y" => Float(@a[5]) / @b[5]]]
   end
 end
