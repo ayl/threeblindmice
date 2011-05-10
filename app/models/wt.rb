@@ -54,6 +54,14 @@ class Wt
   key :abslogmaxdiff, Float
   key :abslogmindiff, Float
 
+  def self.buildIndices
+    Wt.ensure_index(:abslogmindiff)
+    Wt.ensure_index(:absmindiff)
+    Wt.ensure_index(:gene)
+    Wt.ensure_index([[:logconsistent, 1], [:abslogmindiff, -1], [:genetype, 1]])
+    Wt.ensure_index([[:consistent, 1], [:absmindiff, -1], [:genetype, 1]])
+  end
+
   def self.search(name)
     @a = all(:conditions => {:gene => name}, :limit => 500)
     return @a.sort!{|a, b| a.locus <=> b.locus}
@@ -61,16 +69,16 @@ class Wt
   
   def self.logbrowse(browse)
     browse = browse.to_f
-    @a = all(:conditions => {:logconsistent => -1, :abslogmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
-    @b = all(:conditions => {:logconsistent => 1, :abslogmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
+    @a = all(:conditions => {:logconsistent => -1, :abslogmindiff.gte => browse, :genetype.nin => ["intron", "intergenic"], :numofexpress => 6}, :limit => 500)
+    @b = all(:conditions => {:logconsistent => 1, :abslogmindiff.gte => browse, :genetype.nin => ["intron", "intergenic"], :numofexpress => 6}, :limit => 500)
     return @a + @b
   end
 
   
   def self.browse(browse)
     browse = browse.to_f
-    @a = all(:conditions => {:consistent => -1, :absmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
-    @b = all(:conditions => {:consistent => 1, :absmindiff.gte => browse, :genetype.ne => "intron", :gene.ne => "intergenic", :numofexpress => 6}, :limit => 500)
+    @a = all(:conditions => {:consistent => -1, :absmindiff.gte => browse, :genetype.nin => ["intron", "intergenic"], :numofexpress => 6}, :limit => 500)
+    @b = all(:conditions => {:consistent => 1, :absmindiff.gte => browse, :genetype.nin => ["intron", "intergenic"], :numofexpress => 6}, :limit => 500)
     return @a + @b
   end
 

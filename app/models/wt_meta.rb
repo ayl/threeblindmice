@@ -135,26 +135,30 @@ class WtMeta
   end
   
   def self.loadFile
+    print "ensuring singleness\n"
+    WtMeta.destroy_all
+    print "ensuring dropping of all wts\n"
+    Wt.destroy_all
+    print "beginning loading of file\n"
     meta = WtMeta.new
     count = 0
-    f = File.open("/home/ayl/DATA/WT/Analysis/Expression/Final.F2cov.patches.normalized", "r")
+    f = File.open("/home/ayl/DATA/newAnalysis/Final.F2cov.patches.normalized.newCov.sorted.All9Annotated", "r")
     f.each_line do |line|
       a = line.chomp.split("\t")
       type = "intergenic"
       
       #parsing of gene alignment
       gene = "intergenic"
-      flagexon = 0
-      if a[0] != "intergenic"
+      if a[0] != "intergenic" and (a[0].match(/NA/) == nil) and (a[0].match(/genscan/) == nil) and (a[0].match(/geneid/) == nil)
         a[0].split(/[ \.:]/).each do |word|
-          if word != "" and word != "intergenic" and word.match(/^exon/) == nil and word.match(/^intron/) == nil
+          if word != "" and word != "intergenic" and word.match(/^exon/) == nil and word.match(/^intron/) == nil and word.match(/Sep07/) == nil
             gene = word
           end
           if word.match(/^exon/)
             type = word
-            flagexon = 1
+	    break
           end
-          if word.match(/^intron/) and flagexon == 0 
+          if word.match(/^intron/) 
             type = word
           end
         end

@@ -54,6 +54,15 @@ class MicroRna
   key :abslogmaxdiff, Float
   key :abslogmindiff, Float
 
+
+  def self.buildIndices
+    MicroRna.ensure_index(:abslogmindiff)
+    MicroRna.ensure_index(:absmindiff)
+    MicroRna.ensure_index(:gene)
+    MicroRna.ensure_index([[:logconsistent, 1], [:abslogmindiff, -1], [:genetype, 1]])
+    MicroRna.ensure_index([[:consistent, 1], [:absmindiff, -1], [:genetype, 1]])
+  end
+
   def self.search(name)
     @a = all(:conditions => {:gene => name}, :limit => 500)
     return @a.sort!{|a, b| a.locus <=> b.locus}
