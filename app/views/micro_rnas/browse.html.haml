@@ -6,6 +6,7 @@
       %th Gene
       //%th Locus
       %th Type
+      %th Len
       %th Min
       %th Log
       %th 3
@@ -23,6 +24,8 @@
         //  =wt.locus
         %td.small
           =wt.genetype
+        %td.small
+          =(wt.locusstart - wt.locusend).abs
         %td.small
           ="%.2f" % wt.absmindiff
         %td.small

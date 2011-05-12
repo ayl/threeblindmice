@@ -11,6 +11,7 @@
     %tr
       %th Locus
       %th Type
+      %th Len
       %th Min Diff
       %th Min Ratio
       %th Dir
@@ -27,6 +28,8 @@
           =link_to wt.locus, "search?one=yes&id="+wt.id.to_s
         %td.small
           =wt.genetype
+        %td.small
+          =(wt.locusstart - wt.locusend).abs
         %td.small
           ="%.2f" % wt.absmindiff
         %td.small
