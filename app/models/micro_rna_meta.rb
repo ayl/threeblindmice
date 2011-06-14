@@ -101,7 +101,7 @@ class MicroRnaMeta
     print "beginning loading of file\n"
     meta = MicroRnaMeta.new
     count = 0
-    f = File.open("/home/ayl/DATA/newMicroRNA/Final.F2cov.patches.normalized.6cutoff.9annotation", "r")
+    f = File.open("/home/ayl/DATA/new/MicroRNA/Final.F2cov.patches.normalized.6cutoff.9annotation", "r")
     f.each_line do |line|
       a = line.chomp.split("\t")
       type = "intergenic"

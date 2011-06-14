@@ -142,7 +142,7 @@ class WtMeta
     print "beginning loading of file\n"
     meta = WtMeta.new
     count = 0
-    f = File.open("/home/ayl/DATA/newAnalysis/Final.F2cov.patches.normalized.newCov.sorted.All9Annotated", "r")
+    f = File.open("/home/ayl/DATA/new/WT/Final.F2cov.patches.normalized.newCov.10cutoff.All9Annotated", "r")
     f.each_line do |line|
       a = line.chomp.split("\t")
       type = "intergenic"
